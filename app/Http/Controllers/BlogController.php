@@ -12,7 +12,7 @@ class BlogController extends Controller
      */
     public function index()
     {
-        $blogs = Blog::orderBy('created_at', 'desc')->get();
+        $blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
 
         return view("blogs", ['blogs' => $blogs]);
     }
@@ -31,8 +31,8 @@ class BlogController extends Controller
     public function store(Blog $blog)
     {
         $validated = request()->validate([
-          'title' => 'required|string|max:255',
-          'content' => 'required|string'
+            'title' => 'required|string|max:255',
+            'content' => 'required|string'
         ]);
 
         $blog->title = $validated['title'];

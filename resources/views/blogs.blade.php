@@ -26,6 +26,9 @@
                         @endauth
                     </div>
                 @endforeach
+                <div class="mb-10">
+                    {{ $blogs->links() }}
+                </div>
             @endif
         </div>
 
