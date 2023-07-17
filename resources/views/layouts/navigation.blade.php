@@ -20,7 +20,7 @@
                             {{ __('Create blog') }}
                         </x-nav-link>
                     @else
-                        <x-nav-link :href="route('/')" :active="request()->routeIs('/')">
+                        <x-nav-link :href="route('blogs')" :active="request()->routeIs('blogs')">
                             {{ __('Blogs') }}
                         </x-nav-link>
                         <x-nav-link :href="route('login')">{{ __('Log in') }}</x-nav-link>

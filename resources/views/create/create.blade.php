@@ -7,11 +7,11 @@
         </x-slot>
 
         <div class="mt-10">
-            <form action="{{ route('blog.store') }}" method="POST">
+            <form action="{{ route('blog.store') }}" method="POST" autocomplete="off">
                 @csrf
                 <div class="flex flex-col space-y-3">
                     <label class="text-lg">Title</label>
-                    <input type="text" name="title" class="border border-gray-200 p-2 rounded-md">
+                    <input type="text" name="title" autocomplete="off" role="presentation" aria-autocomplete="none" class="border border-gray-200 p-2 rounded-md">
                 </div>
                 <div class="flex flex-col space-y-3 mt-4">
                     <label class="text-lg">Content</label>

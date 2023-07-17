@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Models\Blog;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class BlogController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      */
     public function index()
     {
+        $this->authorizeResource(Blog::class, 'blog');
         $blogs = Blog::orderBy('created_at', 'desc')->paginate(5);
 
         return view("blogs", ['blogs' => $blogs]);
@@ -53,6 +57,22 @@ class BlogController extends Controller
         $blog = Blog::find($blogId);
 
         return view('blogs.blog', ['blog' => $blog]);
+    }
+
+    public function showUserBlogs()
+    {
+        $userId = Auth::user()->id;
+
+        $perPage = 10; // Number of blogs per page
+
+        $blogs = DB::table('blogs')
+        ->join('users', 'blogs.user_id', '=', 'users.id')
+        ->where('users.id', $userId)
+            ->select('blogs.*')
+            ->orderBy('created_at', 'desc')
+            ->paginate($perPage);
+
+        return view('blogs', ['blogs' => $blogs]);
     }
 
     /**

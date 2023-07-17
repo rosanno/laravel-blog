@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', [BlogController::class, 'index'])->name("/");
+Route::get('/blogs', [BlogController::class, 'index'])->name("blogs");
 Route::get('blog/create', [BlogController::class, 'create'])->middleware(['auth', 'verified'])->name('blog.create');
 Route::get('blog/{blogId}', [BlogController::class, 'show'])->name('blog.show');
 
@@ -27,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/', [BlogController::class, 'showUserBlogs'])->name("/");
     Route::post('blog/create', [BlogController::class, 'store'])->name('blog.store');
     Route::get('blog/edit/{blogId}', [BlogController::class, 'edit'])->name('blog.edit');
     Route::put('blog/update/{blogId}', [BlogController::class, 'update'])->name('blog.update');
