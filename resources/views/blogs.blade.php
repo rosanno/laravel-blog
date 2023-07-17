@@ -14,7 +14,7 @@
                     <div class="bg-white border rounded-md shadow-sm my-5 p-5">
                         <h1 class="text-lg font-bold truncate">{{ $blog->title }}</h1>
                         <p class="text-sm py-2">{{ Str::limit($blog->content, 250) }} <a
-                                class="block pt-5 text-blue-500 font-bold underline" href="{{ route('blog.show', $blog->id) }}"
+                                class="block pt-5 text-blue-500 font-bold underline w-max" href="{{ route('blog.show', $blog->id) }}"
                                 href="">Read</a></p>
                         <h3 class="text-sm text-gray-400 mt-2">{{ $blog->author }}</h3>
                         @auth
