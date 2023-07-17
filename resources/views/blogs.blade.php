@@ -14,7 +14,7 @@
                     <div class="bg-white border rounded-md shadow-sm my-5 p-5">
                         <a href="{{ route('blog.show', $blog->id) }}">
                             <h1 class="text-lg font-bold truncate">{{ $blog->title }}</h1>
-                            <p class="text-sm py-2">{{ $blog->content }}</p>
+                            <p class="text-sm py-2">{{ Str::limit($blog->content, 250) }}</p>
                             <h3 class="text-sm text-gray-400 mt-2">{{ $blog->author }}</h3>
                         </a>
                         @auth
